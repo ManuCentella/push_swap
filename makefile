@@ -13,11 +13,20 @@ LIBFT = libft/libft.a
 
 RM = rm -rf
 
-SRC_DIR = src/
+SRC_DIR = src sort/
 
 OBJ_DIR = obj/
 
-SRC =	check main stack utils
+SRCS = main.c \
+       check.c \
+       stack.c \
+       utils.c \
+       index.c \
+       is_sorted.c \
+       rotate.c \
+       sort_three.c \
+       swap.c
+
 
 SRC_FILES = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
 

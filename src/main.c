@@ -40,7 +40,7 @@ void process_arg(t_stack **stack_a, char **argv)
     {
         long num = ft_atol(argv[i]);
         if (!ft_error(&num, 1)) // Pasar la dirección de num
-            fill_stack(stack_a, stack_new((int)num)); // Convertir num a int y pasar como argumento
+            stack_add(stack_a, stack_new((int)num)); // Convertir num a int y pasar como argumento
         i++;
     }
 }
@@ -48,10 +48,10 @@ void process_arg(t_stack **stack_a, char **argv)
 int main(int argc, char **argv)
 {
     t_stack *stack_a;
-    t_stack *stack_b;
+    t_stack	*stack_b;
+	int		stack_size;
     int i;
 
-    stack_b = NULL;
     stack_a = NULL;
 
     if (argc == 2)
@@ -61,6 +61,9 @@ int main(int argc, char **argv)
     i = 0; 
     while (i++ < argc)
         process_arg(&stack_a, &argv[i]);
+    stack_size = get_stack_size(stack_a);
+	get_index(stack_a, stack_size + 1);
+	push_swap(&stack_a, &stack_b, stack_size);
     return 0;
     }
 }

@@ -1,3 +1,4 @@
+#include "push_swap.h"
 
 int	ft_strcmp(int *s1, char *s2)
 {

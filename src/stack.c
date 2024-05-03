@@ -18,27 +18,54 @@ t_stack	*stack_new(int value)
 	return (new);
 }
 
-void fill_stack(t_stack **stack, t_stack *new_node)
-{
-    if (!new_node)
-        return;
+/*	Adds an element to the bottom of a stack. */
 
-    new_node->next = *stack;
-    *stack = new_node;
+void	stack_add(t_stack **stack, t_stack *stack_new)
+{
+	t_stack	*bottom;
+
+	if (!stack_new)
+		return ;
+	if (!*stack)
+	{
+		*stack = stack_new;
+		return ;
+	}
+	bottom = get_bottom(*stack);
+	bottom->next = stack_new;
 }
 
-void print_stack(t_stack *head)
-{
-    if (head == NULL) {
-        printf("La pila está vacía.\n");
-        return;
-    }
+/*	Returns the last element of the stack. */
 
-    t_stack *current = head;
-    printf("Contenido de la pila:\n");
-    while (current != NULL) {
-        printf("%d ", current->value);
-        current = current->next;
-    }
-    printf("\n");
+t_stack	*get_bottom(t_stack *stack)
+{
+	while (stack && stack->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
+
+/* Returns de element before the bottom element */
+
+t_stack	*before_bottom(t_stack *stack)
+{
+	while (stack && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
+}	
+
+/*	Returns the number of elements in a stack. */
+
+int	get_stack_size(t_stack	*stack)
+{
+	int	size;
+
+	size = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		stack = stack->next;
+		size++;
+	}
+	return (size);
 }
