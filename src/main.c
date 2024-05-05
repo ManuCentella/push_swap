@@ -1,5 +1,5 @@
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int split_arguments(t_stack **stack_a, char *argv)
 {
@@ -45,25 +45,27 @@ void process_arg(t_stack **stack_a, char **argv)
     }
 }
 
+// !!PONTE LA NORMINETTE!!
+
 int main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack	*stack_b;
+	t_stack *stack_a;
+	t_stack	*stack_b;
 	int		stack_size;
-    int i;
+	int     i;
 
-    stack_a = NULL;
-
-    if (argc == 2)
-        split_arguments(&stack_a, argv[1]);
-    else if (argc > 2)
-    {
-    i = 0; 
-    while (i++ < argc)
-        process_arg(&stack_a, &argv[i]);
-    stack_size = get_stack_size(stack_a);
-	get_index(stack_a, stack_size + 1);
-	push_swap(&stack_a, &stack_b, stack_size);
-    return 0;
-    }
+	stack_a = NULL;
+    stack_b = NULL;
+	if (argc == 2)
+		split_arguments(&stack_a, argv[1]);
+	else if (argc > 2)
+	{
+		i = 0; 
+		while (i++ < argc)
+			process_arg(&stack_a, &argv[i]);
+		stack_size = get_stack_size(stack_a);
+		get_index(stack_a, stack_size + 1);
+		push_swap(&stack_a, &stack_b, stack_size);
+	}
+	return (0);
 }
