@@ -13,19 +13,21 @@ LIBFT = libft/libft.a
 
 RM = rm -rf
 
-SRC_DIR = src sort/
+SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRCS = main.c \
-       check.c \
-       stack.c \
-       utils.c \
-       index.c \
-       is_sorted.c \
-       rotate.c \
-       sort_three.c \
-       swap.c
+## !Estudiate el Makefile con chatgpt!
+
+SRC = main \
+       check \
+       stack \
+       utils \
+       index \
+       is_sorted \
+       rotate \
+       sort_three \
+       swap
 
 
 SRC_FILES = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
@@ -43,7 +45,7 @@ $(NAME):	$(OBJ_FILES)
 			@echo "$(NAME) compiled"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
-				@mkdir -p $(OBJ_DIR)
+				mkdir -p $(OBJ_DIR)
 				$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 				@echo "$< compiled"
 
@@ -63,6 +65,6 @@ re:	fclean all
 
 .PHONY:	all clean fclean re
 
-ifndef VERBOSE
-.SILENT:
-endif
+#ifndef VERBOSE ##no uses algo si no sabes lo que hace##
+#.SILENT:
+#endif

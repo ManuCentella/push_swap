@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-static int	biggest_index(t_stack *stack)
+int	biggest_index(t_stack *stack)
 {
 	int	index;
 
@@ -23,8 +23,8 @@ void	sort_three(t_stack **stack)
 	biggest = biggest_index(*stack);
 	if ((*stack)->index == biggest)
 		do_ra(stack);
-	else if ((*stack)->next->index == biggest)
-		do_rra(stack);
+	/* else if ((*stack)->next->index == biggest)
+		do_rra(stack); */ //no la tienes definida, no la uses entonces
 	if ((*stack)->index > (*stack)->next->index)
 		do_sa(stack);
 }
